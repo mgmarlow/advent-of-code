@@ -8,29 +8,19 @@ points = File.read("data/day08.txt")
   .split("\n")
   .map { |line| Point.new(*line.split(",").map(&:to_i)) }
 
-# https://en.wikipedia.org/wiki/Disjoint-set_data_structure
 class DSU
   def initialize(n)
     @parent = (0...n).to_a
-    @size = Array.new(n, 1)
   end
 
-  def find(x) = @parent[x] = x == @parent[x] ? x : find(@parent[x])
+  def find(x) =
+    x == @parent[x] ? x : find(@parent[x])
 
-  def size(x) = @size[find(x)]
+  def union(a, b) =
+    @parent[find(a)] = find(b)
 
-  def union(a, b)
-    ra = find(a)
-    rb = find(b)
-    return if ra == rb
-
-    if @size[ra] < @size[rb]
-      ra, rb = rb, ra
-    end
-
-    @parent[rb] = ra
-    @size[ra] += @size[rb]
-  end
+  def all_connected?() =
+    (0...@parent.size).map { |i| find(i) }.uniq.size == 1
 end
 
 # Calculate all of the distances ahead-of-time
@@ -62,9 +52,7 @@ puts component_sizes.values.sort[-3..].reduce(:*)
 dsu = DSU.new(points.length)
 last_visit = []
 edges.each do |dist, a, b|
-  if dsu.size(a) == points.length
-    break
-  end
+  break if dsu.all_connected?
   last_visit = [a, b]
   dsu.union(a, b)
 end
