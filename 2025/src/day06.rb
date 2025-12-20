@@ -13,8 +13,7 @@ puts result
 # Need to re-read the input data since splitting out the whitespace
 # doesn't work for part 2 (and the items aren't consistently
 # left/right aligned).
-content = File.read("data/day06.txt")
-  .split("\n")
+content = File.readlines("data/day06.txt")
 
 str_nums = content[0..-2] # : Array[String]
 operator_line = content.last
