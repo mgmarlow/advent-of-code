@@ -12,8 +12,7 @@ end
 
 class DayOne
   def initialize
-    @lines = File.read("data/day01.txt")
-      .split("\n")
+    @lines = File.readlines("data/day01.txt")
       .map { |line| [line[0], line[1..].to_i] }
   end
 

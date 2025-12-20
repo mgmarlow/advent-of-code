@@ -4,8 +4,7 @@ Point = Data.define(:x, :y, :z) do
   end
 end
 
-points = File.read("data/day08.txt")
-  .split("\n")
+points = File.readlines("data/day08.txt")
   .map { |line| Point.new(*line.split(",").map(&:to_i)) }
 
 class DSU

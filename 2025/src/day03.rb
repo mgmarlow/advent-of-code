@@ -1,5 +1,4 @@
-content = File.read("data/day03.txt")
-  .split("\n")
+content = File.readlines("data/day03.txt")
   .map { |row| row.split("").map(&:to_i) }
 
 # Original solution for part 1

@@ -1,5 +1,4 @@
-content = File.read("data/day06.txt")
-  .split("\n")
+content = File.readlines("data/day06.txt")
   .map(&:split)
 
 nums = content[0..-2] # : Array[Array[String]]

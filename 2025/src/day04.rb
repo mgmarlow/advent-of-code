@@ -1,5 +1,4 @@
-$content = File.read("data/day04.txt")
-  .split("\n")
+$content = File.readlines("data/day04.txt")
   .map { |row| row.split("") }
 
 ADJACENTS = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]

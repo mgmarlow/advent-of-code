@@ -1,5 +1,4 @@
-ranges, ids = File.read("data/day05.txt")
-  .split("\n")
+ranges, ids = File.readlines("data/day05.txt")
   .reject { |line| line.empty? }
   .partition { |line| line.include?("-") }
 
